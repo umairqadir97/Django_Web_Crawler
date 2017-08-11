@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Python Crawler</title>
+	{% load staticfiles %}
+
+	<!-- Bootstrap -->
+    <link href="{% static 'spider/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'spider/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'spider/css/buttons.dataTables.min.css' %}" rel="stylesheet">
+
+	<style type="text/css">
+		html,
+		body {
+		  height:100%
+		}
+	</style>
+</head>
+
+<body class="body" style="background-color:#f6f6f6">
+	<div class="container-fluid" style="min-height:95%; ">
+		<div class="row">
+			  <div class="col-sm-2">
+				  <br>
+				  <center>
+					<img src="{% static 'spider/img/spider.jpg' %}" class="img-responsive" style='max-height:100px;' alt="face">
+				  </center>
+			  </div>
+			  <div class="col-sm-10">
+				  <br>
+				  <center>
+				  <h2>Welcome to Python Web Crawler !</h2>
+				  </center>
+			  </div>
+		</div><hr>
+
+		<div class="row">
+		  <div class="col-sm-12">
+		  <br>
+
+		  <br>
+			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+					<form action="/view/" method="post">
+					{% csrf_token %}
+					    <div class="form-group">
+						    <label for="home_url">Enter Homepage URL Here:  </label>
+						    <input class="form-control" id="home_url" type="text" name="home_url" >
+					  		<br>
+					  		<label for="no_of_threads">Enter Number of Threads:  </label>
+					        <input class="form-control" id="number_of_threads" type="text" name="number_of_threads">
+					  		<br>
+					  		<label for="google_code">Check Google Analytics Code:  </label>
+					        <input id="google_code" type="checkbox" name="google_code"> 
+					  		<br>
+					  		<label for="broken_links">Check Broken Links:  </label>
+							<input id="broken_links" type="checkbox" name="broken_links">
+							<br><br>
+							<div class="col-sm-3" align="center">
+					      	<input class="form-control" type="submit" value="Start Crawling" style="background-color:#f6f6f6">
+					      	</div>
+					      	<br>
+					    </div>
+		  			</form>
+			</div> <!--well bs-sidebar affix-->
+		  </div> <!--col-sm-2-->
+
+
+
+
+
+		  	<!-- <table class="sortable table" style=" display: block; overflow-x:auto;background-color:#fff4f4  "> -->
+			
+			<table  id="display_table" class="table table-striped table-bordered table-hover">
+			<thead>
+					<tr style="background-color:#f3d3f5">
+					  <th>url_No</th>
+					  <th>url_crawled</th>
+					  <th>canonical URL</th>
+					  <th>meta_title</th>
+					  <th>meta_title_length</th>
+					  <th>meta_description</th>
+					  <th>meta_description_length</th>
+					  <th>h1</th>
+					  <th>h2</th>
+					  <th>h3</th>
+					  <th>h4</th>
+					  <th>h5</th>
+					  <th>og_title</th>
+					  <th>og_description</th>
+					  <th>og_image</th>
+					  <th>og_type</th>
+					  <th>og_video</th>
+					  <th>og_locale</th>
+					  <th>og_URL</th>
+					  <th>og_sitename</th>
+					  <th>og_updated_time</th>	  
+					  <th>og_audio</th>
+					  <th>twitter_title</th>
+					  <th>twitter_description</th>
+					  <th>twitter_image</th>
+					  <th>twitter_card</th>
+					  <th>twitter_site</th>
+					  <th>twitter_creator</th>
+  					  <th>number_of missing_ALT_tags</th>
+					  <th>number_of broken_links</th>
+					  <th>Google_Analytics tracking_code</th>
+					  </tr>
+				</thead>
+				<tbody>
+
+					{% for key, value in result.items %}
+					    <tr>
+					        {% for k, v in value.items %}
+					            <td> <b> {{ k }} </b> {{ v }}	</td>
+					        {% endfor %}
+					    </tr>
+					{% endfor %}
+				  </tbody>
+				<tfoot>
+					<tr style="background-color:#f3d3f5">
+					  <th>url_No</th>
+					  <th>url_crawled</th>
+					  <th>canonical URL</th>
+					  <th>meta_title</th>
+					  <th>meta_title_length</th>
+					  <th>meta_description</th>
+					  <th>meta_description_length</th>
+					  <th>h1</th>
+					  <th>h2</th>
+					  <th>h3</th>
+					  <th>h4</th>
+					  <th>h5</th>
+					  <th>og_title</th>
+					  <th>og_description</th>
+					  <th>og_image</th>
+					  <th>og_type</th>
+					  <th>og_video</th>
+					  <th>og_locale</th>
+					  <th>og_URL</th>
+					  <th>og_sitename</th>
+					  <th>og_updated_time</th>	  
+					  <th>og_audio</th>
+					  <th>twitter_title</th>
+					  <th>twitter_description</th>
+					  <th>twitter_image</th>
+					  <th>twitter_card</th>
+					  <th>twitter_site</th>
+					  <th>twitter_creator</th>
+  					  <th>number_of missing_ALT_tags</th>
+					  <th>number_of broken_links</th>
+					  <th>Google_Analytics tracking_code</th>
+					</tr>
+				</tfoot>
+			</table>
+
+
+<footer>
+	<div>
+		<br>
+			<h3> Thanks for using it !</h3>
+		<br>
+	</div>
+
+	<div class="container-fluid" style='margin-left:15px'>
+		<p><a href="http://127.0.0.1:8000/" > HOME </a> </p>
+	</div>
+</footer>	
+	
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'spider/js/jquery.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'spider/js/bootstrap.min.js' %}" ></script>
+    <script src="{% static 'spider/js/jquery.dataTables.min.js' %}" ></script>
+    <script src="{% static 'spider/js/dataTables.bootstrap.min.js' %}"></script>
+    <!-- For export buttons -->
+    <script src="{% static 'spider/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'spider/js/buttons.flash.min.js' %}"></script>
+     <script src="{% static 'spider/js/jszip.min.js' %}"></script>
+ 
+
+    <script src="{% static 'spider/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'spider/js/buttons.print.min.js' %}"></script>
+
+    <script>
+    $(document).ready(function(){
+    $('#display_table').DataTable({
+        buttons: ['copy', 'csv', 'excel', 'pdf']
+
+  });
+ });
+    </script>
+</body>
+
+</html>
