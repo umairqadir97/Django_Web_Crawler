@@ -1,0 +1,5 @@
+# write in this sequence line by line: no_of_threads, URLs_crawled_per_job(default 100), title_length(20),  description_length (200)
+5
+100
+20
+50
