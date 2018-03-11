@@ -1,14 +1,17 @@
-## Django Web Crawler ##
+# Django Web Crawler
 
 
-### Initial Form ###
+## Initial Form ##
+```
+```
 * Website URL
 * Check Broken Links
 * Check Google Analytics Tracking Code
 * Recaptcha
 * startCrawling(Button)
 
-### Features ###
+## Features ##
+```
 * Limit of concurrent crawler jobs
 * Progress indicator
 * Generate summary at the end
@@ -16,7 +19,8 @@
 
 
 
-### Requirements Installation ###
+## Requirements Installation ##
+```
 1- Python3
 2- Open terminal/cmd in code folder & run:
       $ pip install -r requirements
